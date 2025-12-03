@@ -9,20 +9,38 @@
 
 <body>
   <div id="app">
-    <a-scene>
+    <div class="over">
+      <div id="directionContainer">
+        <span>Tap to change direction</span>
+        <div id="directionButtons">
+          <button id="directionRightButton">RIGHT</button>
+          <button id="directionLeftButton">LEFT</button>
+        </div>
+      </div>
+
+    </div>
+    <a-scene direction>
       <a-assets>
         <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
         <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
       </a-assets>
 
-      <a-entity board id="board-container" scale="1 1 1" position="0 0 -5">
+      <a-entity board id="board-container" scale="1 1 1" position="0 0 -6">
+
         <a-entity id="board-elements">
           <a-entity id="board-planes">
           </a-entity>
         </a-entity>
+
+        <a-entity snake id="snake-container" position="-2.2 0.25 2.2">
+          <a-sphere id="head" scale="0.3 0.3 0.3" color="red"></a-sphere>
+        </a-entity>
+
       </a-entity>
+
       <a-sky src="#skyTexture"></a-sky>
       <a-plane src="#groundTexture" rotation="-90 0 0" width="30" height="30" position="0 -0.01 0"></a-plane>
+
     </a-scene>
   </div>
   <script type="module" src="/src/main.js"></script>
