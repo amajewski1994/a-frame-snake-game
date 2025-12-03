@@ -5,6 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>a-frame-snake-game</title>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.3/dist/aframe-physics-system.min.js"></script>
 </head>
 
 <body>
@@ -19,10 +22,11 @@
       </div>
 
     </div>
-    <a-scene direction>
+    <a-scene direction physics="debug: false">
       <a-assets>
-        <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
-        <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+        <img id="skyTexture" crossorigin="anonymous"
+          src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+        <img id="groundTexture" crossorigin="anonymous" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
       </a-assets>
 
       <a-entity board id="board-container" scale="1 1 1" position="0 0 -6">
@@ -32,8 +36,14 @@
           </a-entity>
         </a-entity>
 
+        <a-entity id="board-spheres" position="0 0.15 0">
+          <a-sphere id="point" dynamic-body="mass: 0; shape: sphere; sphereRadius: 0.15" scale="0.15 0.15 0.15"
+            position="1.1 0 2.2" color="green"></a-sphere>
+        </a-entity>
+
         <a-entity snake id="snake-container" position="-2.2 0.25 2.2">
-          <a-sphere id="head" scale="0.3 0.3 0.3" color="red"></a-sphere>
+          <a-sphere id="head" dynamic-body="mass: 0; shape: sphere; sphereRadius: 0.1" scale="0.3 0.3 0.3"
+            color="red"></a-sphere>
         </a-entity>
 
       </a-entity>
