@@ -11,11 +11,18 @@
   <div id="app">
     <a-scene>
       <a-assets>
-        
+        <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+        <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
       </a-assets>
-      
-      
-      
+
+      <a-entity board id="board-container" scale="1 1 1" position="0 0 -5">
+        <a-entity id="board-elements">
+          <a-entity id="board-planes">
+          </a-entity>
+        </a-entity>
+      </a-entity>
+      <a-sky src="#skyTexture"></a-sky>
+      <a-plane src="#groundTexture" rotation="-90 0 0" width="30" height="30" position="0 -0.01 0"></a-plane>
     </a-scene>
   </div>
   <script type="module" src="/src/main.js"></script>
