@@ -3,6 +3,7 @@ import { data } from "../config/data"
 export const snakeComponent = {
     schema: {
         size: { default: 5 },
+        isMoving: { default: false },
     },
     init() {
         const { size } = this.data
@@ -11,7 +12,12 @@ export const snakeComponent = {
         const duration = 500
         const head = this.el.children[0]
 
-        const moveSnake = () => {
+        const mainContainer = document.getElementById('main-container')
+        const instructionContainer = document.getElementById('instruction-container')
+        const endScreenContainer = document.getElementById('end-screen-container')
+        const endScreenPoints = document.getElementById('end-screen-points')
+
+        this.moveSnake = () => {
             data.moveIndex++
             for (let i = data.directionArr.length - 1; i >= 0; i--) {
                 if (i === 0) break
@@ -43,7 +49,7 @@ export const snakeComponent = {
         }
 
         const moveSnakeFinishHandler = () => {
-            moveSnake()
+            this.moveSnake()
         }
 
         function nearestPoint(object3D) {
@@ -114,14 +120,25 @@ export const snakeComponent = {
             return `${x} 0 ${z}`;
         };
 
+        const gameOver = async () => {
+            data.gameover = true
+            instructionContainer.style.display = 'none'
+            endScreenContainer.style.display = 'block'
+            mainContainer.style.display = 'block'
+
+            endScreenPoints.innerHTML = `You've scored ${data.points} points`
+            setTimeout(() => {
+                mainContainer.style.opacity = 1
+            })
+        }
+
         head.addEventListener('collide', async (e) => {
             if (data.gameover) return
             const collEl = await e.detail.body.el
             const collElId = await collEl.getAttribute('id')
 
             if (collElId && collElId.includes('tail')) {
-                console.log('gameover')
-                data.gameover = true
+                gameOver()
 
                 for (let i = 0; i < this.el.children.length; i++) {
                     this.el.children[i].removeAttribute('animation__position')
@@ -144,8 +161,9 @@ export const snakeComponent = {
             await collEl.setAttribute('position', newPos)
         })
 
-        moveSnake()
-
         head.addEventListener('animationcomplete__position', moveSnakeFinishHandler)
+    },
+    update() {
+        if (this.data.isMoving) this.moveSnake()
     },
 }

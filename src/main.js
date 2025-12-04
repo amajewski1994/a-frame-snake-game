@@ -9,3 +9,6 @@ AFRAME.registerComponent('snake', snakeComponent)
 
 import { directionComponent } from './components/directionButtons'
 AFRAME.registerComponent('direction', directionComponent)
+
+import { UIComponent } from './components/UI'
+AFRAME.registerComponent('ui', UIComponent)

@@ -13,16 +13,43 @@
 <body>
   <div id="app">
     <div class="over">
-      <div id="directionContainer">
+
+      <div id="main-container">
+        <div id="instruction-container">
+          <h2>SNAKE GAME</h2>
+          <div id="instruction">
+            A simple idea with endless challenge. You control the snake, and every bite makes it grow.
+            <br /><br />
+            Use the LEFT and RIGHT buttons to steer your snake as it moves forward on its own. Collect the
+            food that appears, grow longer, and increase your score with every piece you eat.
+            <br /><br />
+            Plan your turns carefully and avoid boxing yourself in. Keep moving, stay sharp, and see how
+            long you can survive on your way to a new high score.
+          </div>
+          <div id="button-start">
+            <button>START</button>
+          </div>
+        </div>
+
+        <div id="end-screen-container">
+            <h2>GAMEOVER</h2>
+            <p id="end-screen-points">You've scored 0 points</p>
+            <div id="button-retry">
+              <button>PLAY AGAIN</button>
+            </div>
+        </div>
+      </div>
+
+      <div id="direction-container">
         <span>Tap to change direction</span>
-        <div id="directionButtons">
-          <button id="directionRightButton">RIGHT</button>
-          <button id="directionLeftButton">LEFT</button>
+        <div id="direction-buttons">
+          <button id="direction-right-button">RIGHT</button>
+          <button id="direction-left-button">LEFT</button>
         </div>
       </div>
 
     </div>
-    <a-scene direction physics="debug: false">
+    <a-scene ui direction physics="debug: false">
       <a-assets>
         <img id="skyTexture" crossorigin="anonymous"
           src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">

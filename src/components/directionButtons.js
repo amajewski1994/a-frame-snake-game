@@ -2,8 +2,8 @@ import { data } from '../config/data'
 
 export const directionComponent = {
     init() {
-        const directionRightButton = document.getElementById('directionRightButton')
-        const directionLeftButton = document.getElementById('directionLeftButton')
+        const directionRightButton = document.getElementById('direction-right-button')
+        const directionLeftButton = document.getElementById('direction-left-button')
 
         const directionButtonHandler = (buttonDir) => {
             data.dirId = buttonDir === 'RIGHT' ? (data.dirId + 1) : (data.dirId - 1)
@@ -20,7 +20,6 @@ export const directionComponent = {
             } else {
                 console.log('Unknown direction id')
             }
-            console.log(data.dirId)
         }
 
         directionRightButton.addEventListener('click', () => directionButtonHandler('RIGHT'))
