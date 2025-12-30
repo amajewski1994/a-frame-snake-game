@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>a-frame-snake-game</title>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.3/dist/aframe-physics-system.min.js"></script>
+  <script type="module" crossorigin src="/a-frame-snake-game/assets/index-0dSwD8Tn.js"></script>
+  <link rel="stylesheet" crossorigin href="/a-frame-snake-game/assets/index-E5B62kX0.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="over">
+
+      <div id="main-container">
+        <div id="instruction-container">
+          <h2>SNAKE GAME</h2>
+          <div id="instruction">
+            A simple idea with endless challenge. You control the snake, and every bite makes it grow.
+            <br /><br />
+            Use the LEFT and RIGHT buttons to steer your snake as it moves forward on its own. Collect the
+            food that appears, grow longer, and increase your score with every piece you eat.
+            <br /><br />
+            Plan your turns carefully and avoid boxing yourself in. Keep moving, stay sharp, and see how
+            long you can survive on your way to a new high score.
+          </div>
+          <div id="button-start">
+            <button>START</button>
+          </div>
+        </div>
+
+        <div id="end-screen-container">
+          <h2>GAMEOVER</h2>
+          <p id="end-screen-points">You've scored 0 points</p>
+          <div id="button-retry">
+            <button>PLAY AGAIN</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="direction-container">
+        <span>Tap to change direction</span>
+        <div id="direction-buttons">
+          <button id="direction-right-button">RIGHT</button>
+          <button id="direction-left-button">LEFT</button>
+        </div>
+      </div>
+
+    </div>
+    <a-scene ui direction physics="debug: false">
+      <a-assets>
+        <img id="skyTexture" crossorigin="anonymous"
+          src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+        <img id="groundTexture" crossorigin="anonymous" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+      </a-assets>
+
+      <a-entity board id="board-container" scale="1 1 1" position="0 0 -6">
+
+        <a-entity id="board-elements">
+          <a-entity id="board-planes">
+          </a-entity>
+        </a-entity>
+
+        <a-entity id="board-spheres" position="0 0.15 0">
+          <a-sphere id="point" dynamic-body="mass: 0; shape: sphere; sphereRadius: 0.15" scale="0.15 0.15 0.15"
+            position="1.1 0 2.2" color="green"></a-sphere>
+        </a-entity>
+
+        <a-entity snake id="snake-container" position="-2.2 0.25 2.2">
+          <a-sphere id="head" dynamic-body="mass: 0; shape: sphere; sphereRadius: 0.1" scale="0.3 0.3 0.3"
+            color="red"></a-sphere>
+        </a-entity>
+
+      </a-entity>
+
+      <a-sky src="#skyTexture"></a-sky>
+      <a-plane src="#groundTexture" rotation="-90 0 0" width="30" height="30" position="0 -0.01 0"></a-plane>
+
+    </a-scene>
+  </div>
+</body>
+
+</html>
